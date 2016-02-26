@@ -1,0 +1,54 @@
+{
+  "name": "SurviveJS-Starter-Pack",
+  "version": "1.0.0",
+  "description": "Starter pack based on SurviveJS",
+  "main": "app/index.js",
+  "scripts": {
+    "build": "webpack",
+    "start": "webpack-dev-server",
+    "eslint": "eslint . --ext .js --ext .jsx --format node_modules/eslint-friendly-formatter file1 file2 dir1/ dir2/ || true"
+  },
+  "keywords": [
+    "survivejs",
+    "webpack",
+    "precss",
+    "autoprefixer",
+    "postcss",
+    "eslint",
+    "stylelint",
+    "stylelint-suitcss",
+    "jscs",
+    "jscs-google",
+    "hot-module-replacement"
+  ],
+  "author": "Willem Labu",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^6.3.3",
+    "babel-core": "^6.5.2",
+    "babel-loader": "^6.2.3",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-react-hmre": "^1.1.0",
+    "css-loader": "^0.23.1",
+    "eslint": "^2.2.0",
+    "eslint-friendly-formatter": "^1.2.2",
+    "eslint-loader": "^1.3.0",
+    "eslint-plugin-react": "^4.1.0",
+    "jscs": "^2.10.1",
+    "jscs-loader": "^0.2.0",
+    "npm-install-webpack-plugin": "^2.0.2",
+    "postcss-loader": "^0.8.1",
+    "precss": "^1.4.0",
+    "style-loader": "^0.13.0",
+    "stylelint": "^4.4.0",
+    "stylelint-config-suitcss": "^4.0.0",
+    "webpack": "^1.12.14",
+    "webpack-dev-server": "^1.14.1",
+    "webpack-merge": "^0.7.3"
+  },
+  "dependencies": {
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7"
+  }
+}
