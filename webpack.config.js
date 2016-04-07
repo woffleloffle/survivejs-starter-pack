@@ -113,7 +113,7 @@ if (TARGET === 'build') {
 var SourceMapSource = require("webpack-sources").SourceMapSource;
 var RawSource = require("webpack-sources").RawSource;
 
-function ExtractModule(identifier, originalModule, source, sourceMap, addtitionalInformation, prevModules) {
+function ExtractedModule(identifier, originalModule, source, sourceMap, addtitionalInformation, prevModules) {
 	this._identifier = identifier;
 	this._originalModule = originalModule;
 	this._source = source;
@@ -122,53 +122,53 @@ function ExtractModule(identifier, originalModule, source, sourceMap, addtitiona
 	this.addtitionalInformation = addtitionalInformation;
 	this.chunks = [];
 }
-module.exports = ExtractModule;
+module.exports = ExtractedModule;
 
-ExtractModule.prototype.getOrder = function() {
+ExtractedModule.prototype.getOrder = function() {
 	// http://stackoverflow.com/a/14676665/1458162
 	return /^@import url/.test(this._source) ? 0 : 1;
 };
 
-ExtractModule.prototype.addChunk = function(chunk) {
+ExtractedModule.prototype.addChunk = function(chunk) {
 	var idx = this.chunks.indexOf(chunk);
 	if(idx < 0)
 		this.chunks.push(chunk);
 };
 
-ExtractModule.prototype._removeAndDo = require("webpack/lib/removeAndDo");
+ExtractedModule.prototype._removeAndDo = require("webpack/lib/removeAndDo");
 
-ExtractModule.prototype.removeChunk = function(chunk) {
+ExtractedModule.prototype.removeChunk = function(chunk) {
 	return this._removeAndDo("chunks", chunk, "removeModule");
 };
 
-ExtractModule.prototype.rewriteChunkInReasons = function(oldChunk, newChunks) { };
+ExtractedModule.prototype.rewriteChunkInReasons = function(oldChunk, newChunks) { };
 
-ExtractModule.prototype.identifier = function() {
+ExtractedModule.prototype.identifier = function() {
 	return this._identifier;
 };
 
-ExtractModule.prototype.source = function() {
+ExtractedModule.prototype.source = function() {
 	if(this._sourceMap)
 		return new SourceMapSource(this._source, null, this._sourceMap);
 	else
 		return new RawSource(this._source);
 };
 
-ExtractModule.prototype.getOriginalModule = function() {
+ExtractedModule.prototype.getOriginalModule = function() {
 	return this._originalModule;
 };
 
-ExtractModule.prototype.getPrevModules = function() {
+ExtractedModule.prototype.getPrevModules = function() {
 	return this._prevModules;
 };
 
-ExtractModule.prototype.addPrevModules = function(prevModules) {
+ExtractedModule.prototype.addPrevModules = function(prevModules) {
 	prevModules.forEach(function(m) {
 		if(this._prevModules.indexOf(m) < 0)
 			this._prevModules.push(m);
 	}, this);
 };
 
-ExtractModule.prototype.setOriginalModule = function(originalModule) {
+ExtractedModule.prototype.setOriginalModule = function(originalModule) {
 	this._originalModule = originalModule;
 };
