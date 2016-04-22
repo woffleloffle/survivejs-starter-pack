@@ -13,6 +13,9 @@ const TARGET = process.env.npm_lifecycle_event
 // Map Babel's environment to our target
 process.env.BABEL_ENV = TARGET;
 
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+
 // Auto-install webpack dependencies
 const NpmInstallPlugin = require('npm-install-webpack-plugin')
 
@@ -46,11 +49,8 @@ const common = {
       loaders: ['eslint', 'jscs'],
       include: PATHS.app
     }],
-    loaders: [{
-      test: /\.css$/,
-      loaders: ['style', 'css', 'postcss'],
-      include: PATHS.app
-    }, {
+    loaders: [
+      {
       test: /\.jsx?$/,
       loaders: ['babel'],
       cacheDirectory: true,
@@ -99,13 +99,33 @@ const dev = {
   ]
 }
 
-const prod = {}
+const prod = {
+  output: {
+
+  },
+  module: {
+      loaders: [
+        // Extract CSS during build
+        {
+          test: /\.css$/,
+          loader: ExtractTextPlugin.extract('style', 'css'),
+          include: PATHS.app
+        }
+      ]
+  },
+  plugins: [
+      // Output extracted CSS to a file
+      new ExtractTextPlugin('[name].[chunkhash].css')
+  ]
+  }
+
 
 // Export different configs per env
 if (TARGET === 'start' || !TARGET) {
-  module.exports = merge(common, dev)
+  module.exports = merge(common, dev);
+  //got me there with the closing semi-columns in the merge function...lol
 }
 
-if (TARGET === 'build') {
-  module.exports = merge(common, prod)
+if (TARGET === 'build' || TARGET === 'stats') {
+  module.exports = merge(common, prod);
 }
