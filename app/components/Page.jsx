@@ -184,7 +184,7 @@ var mydata = [{
   }];
 
   function display(){
-    return <BootstrapTable data={mydata} pagination={true}>
+    return <BootstrapTable data={mydata} striped={true} pagination={true} search={true}>
       <TableHeaderColumn dataField="job-number" isKey={true}>Job Num</TableHeaderColumn>
       <TableHeaderColumn dataField="client" >Client Name</TableHeaderColumn>
       <TableHeaderColumn dataField="job-name" >Job Name</TableHeaderColumn>
