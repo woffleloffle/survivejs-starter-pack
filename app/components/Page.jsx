@@ -1,3 +1,11 @@
 import React from 'react';
 
-export default () => <h1>Hello World!</h1>;
+var mydata = "Test";
+
+  function display(){
+    return <div> {mydata}
+  </div>;
+  }
+
+export default () => display(); 
+  
