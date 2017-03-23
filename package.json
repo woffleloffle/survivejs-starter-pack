@@ -41,8 +41,8 @@
     "postcss-loader": "^0.8.1",
     "precss": "^1.4.0",
     "style-loader": "^0.13.0",
-    "stylelint": "^4.4.0",
-    "stylelint-config-suitcss": "^4.0.0",
+    "stylelint": "^7.0.0",
+    "stylelint-config-suitcss": "^10.0.0",
     "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.1",
     "webpack-merge": "^0.7.3"

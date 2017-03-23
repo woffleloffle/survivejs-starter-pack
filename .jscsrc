@@ -8,7 +8,7 @@
   "requireParenthesesAroundIIFE": true,
 
   "maximumLineLength": 120,
-  "validateLineBreaks": "LF",
+  "validateLineBreaks": "CRLF",
   "validateIndentation": 2,
 
   "disallowKeywords": ["with"],

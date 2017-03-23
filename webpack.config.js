@@ -61,11 +61,11 @@ const common = {
     configFile: FILES.eslintrc,
     formatter: require('eslint-friendly-formatter')
   },
-  postcss: function () {
-      return {
-        lint: [stylelint(configSuitCSS)],
-        defaults: [autoprefixer, precss]
-      }
+  postcss: function() {
+    return {
+      lint: [stylelint(configSuitCSS)],
+      defaults: [autoprefixer, precss]
+    }
   }
 }
 
